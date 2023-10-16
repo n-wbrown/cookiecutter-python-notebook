@@ -10,5 +10,6 @@
     "python_interpreter": ["python3", "python"],
     "auto_git_setup": ["yes","no"],
     "git_remote_name": "origin",
+    "readme_format": ["md", "rst"],
     "simple": ["yes", "no"]
 }

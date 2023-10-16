@@ -1,7 +1,4 @@
-===============================
-{{ cookiecutter.project_name }}
-===============================
-
+# {{ cookiecutter.project_name }}
 {% if cookiecutter.simple=="no"%}
 .. image:: https://img.shields.io/pypi/v/{{ cookiecutter.repo_name }}.svg
         :target: https://pypi.python.org/pypi/{{ cookiecutter.repo_name }}
@@ -12,20 +9,16 @@
 
 {{ cookiecutter.description }}
 
-Requirements
-------------
+## Requirements
 
 * Python 3.9+
 
-Installation
-------------
-
-::
-
+## Installation
+```
   $ pip install .
+```
 
-Running the Tests
------------------
-::
-
+## Running the Tests
+```
   $ pytest -v
+```

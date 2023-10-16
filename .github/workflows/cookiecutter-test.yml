@@ -1,7 +1,7 @@
 name: Cookiecutter Test
 
 on:
-  push
+  push:
   pull_request:
 
 env:

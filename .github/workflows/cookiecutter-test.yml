@@ -40,7 +40,7 @@ jobs:
         shell: bash --login -eo pipefail {0}
     strategy:
       matrix:
-        config_file: [--no-input, --config-file tests/complex_config.yaml]
+        config_file: [ tests/default_config.yaml, tests/complex_config.yaml]
 
 
     steps:
@@ -71,7 +71,7 @@ jobs:
 
     - name: Use the cookiecutter
       run: |
-        cookiecutter . ${{ matrix.config_file }} --output-dir "$HOME"
+        cookiecutter . --no-input --config-file ${{ matrix.config_file }} --output-dir "$HOME"
 
     - name: Build wheel and source distribution
       run: |

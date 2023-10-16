@@ -1,10 +1,11 @@
-========================
-PCDS Python Cookiecutter
-========================
+========================================
+Python Package and Notebook Cookiecutter
+========================================
 
-A project template for python projects in the Photon Controls and Data Systems
-Department (PCDS). However, in principle, there is no reason it cannot be used
-for projects outside PCDS. To learn more about cookiecutter:
+A project template for python projects and notebooks. This package is primarily intended for reserachers organize small projects
+consisting of modules and notebooks.
+
+To learn more about cookiecutter:
 
 - Project Homepage: https://cookiecutter.readthedocs.io/en/latest/
 - Github: https://github.com/audreyr/cookiecutter
@@ -38,17 +39,11 @@ Otherwise: ::
 
   $ cookiecutter cookiecutter-pcds-python
 
-
 Configuring a New Project
 -------------------------
 
 setuptools-scm automatically configures versioning for you, with no
 setup steps required - when using pip.
-
-Documentation generation and deployment requires only some repository
-settings configuration.  See here for more information:
-https://confluence.slac.stanford.edu/display/PCDS/Using+GitHub+Actions
-
 
 Resulting Directory Structure
 -----------------------------
@@ -97,3 +92,7 @@ Installing Development Requirements
   $ pip install -Ur requirements.txt
   $ pip install -Ur dev-requirements.txt
   $ pip install -Ur docs-requirements.txt
+
+Acknowledgements 
+----------------
+This repository is forked from from the work of SLAC National Accelerator Laboratory's controls team for the LCLS project. You can visit their original repository here: https://github.com/pcdshub/cookiecutter-pcds-python. 

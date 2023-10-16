@@ -38,6 +38,10 @@ jobs:
         # -e: exit on first error
         # -o pipefail: piped processes are important; fail if they fail
         shell: bash --login -eo pipefail {0}
+    strategy:
+      matrix:
+        config_file: [--no-input, --config-file tests/complex_config.yaml]
+
 
     steps:
     - uses: actions/checkout@v3
@@ -67,7 +71,7 @@ jobs:
 
     - name: Use the cookiecutter
       run: |
-        cookiecutter . --no-input --output-dir "$HOME"
+        cookiecutter . ${{ matrix.config_file }} --output-dir "$HOME"
 
     - name: Build wheel and source distribution
       run: |

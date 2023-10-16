@@ -9,5 +9,6 @@
     "description": "A short description of the project.",
     "python_interpreter": ["python3", "python"],
     "auto_git_setup": ["yes","no"],
-    "git_remote_name": "origin"
+    "git_remote_name": "origin",
+    "simple": ["yes", "no"]
 }

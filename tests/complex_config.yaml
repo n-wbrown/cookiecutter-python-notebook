@@ -1,2 +1,3 @@
 defaults:
+  readme_format: "rst"
   simple: "no"

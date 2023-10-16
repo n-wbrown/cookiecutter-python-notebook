@@ -127,7 +127,7 @@ jobs:
       if: ${{ always() }}
       uses: actions/upload-artifact@v3
       with:
-        name: "pip - Cookiecutter Output - ${{ matrix.config_file }}"
+        name: "pip - Cookiecutter Output"
         path: ~/project_name
 
           #   conda-test:

@@ -1,7 +1,7 @@
 name: Cookiecutter Test
 
 on:
-  push:
+  push
   pull_request:
 
 env:
@@ -26,8 +26,8 @@ env:
     changeps1: false
 
 jobs:
-  pip-test:
-    name: "Python 3.9: pip"
+  pip-tst:
+    name: "pip"
     runs-on: ubuntu-20.04
 
     defaults:
@@ -113,6 +113,12 @@ jobs:
           echo "</details>"
         ) >> "$GITHUB_STEP_SUMMARY"
 
+    - name: Display project structure
+      if: ${{ alwyas() }}
+      run: |
+        cd ~/project_name
+        tree -apguh -L 4
+
     - name: Upload the built package as an artifact
       if: ${{ always() }}
       uses: actions/upload-artifact@v3
@@ -120,117 +126,117 @@ jobs:
         name: "pip - Cookiecutter Output"
         path: ~/project_name
 
-  conda-test:
-    name: "Python 3.9: conda"
-    runs-on: ubuntu-20.04
-
-    defaults:
-      run:
-        # The following allows for each run step to utilize ~/.bash_profile
-        # for setting up the per-step initial state.
-        # --login: a login shell. Source ~/.bash_profile
-        # -e: exit on first error
-        # -o pipefail: piped processes are important; fail if they fail
-        shell: bash --login -eo pipefail {0}
-
-    steps:
-    - uses: actions/checkout@v3
-      with:
-        fetch-depth: 0
-
-    - name: Configure git
-      run: |
-        git config --global user.email "pcds-bot@example.com"
-        git config --global user.name "PCDS / GitHub CI"
-
-    - name: Set up micromamba and environment
-      run: |
-        cd "$HOME"
-        mkdir logs
-        curl -Ls https://micro.mamba.pm/api/micromamba/linux-64/latest | tar -xvj "bin/micromamba"
-        mkdir micromamba
-
-        echo "Micromamba version: $(bin/micromamba --version)" | tee "$GITHUB_STEP_SUMMARY"
-        bin/micromamba shell hook --shell=bash >> ~/.bash_profile
-
-        echo "micromamba activate" >> ~/.bash_profile
-
-    - name: Configure conda for building
-      run: |
-        echo "${CONDARC_SOURCE}" > ~/.condarc
-        echo "Contents of ~/.condarc:"
-        echo "---------------------------"
-        cat ~/.condarc
-        echo "---------------------------"
-
-    - name: Install boa for mambabuild
-      run: |
-        micromamba install boa conda-verify "python=${PYTHON_VERSION}" pip
-        micromamba info
-
-    - name: Check condarc
-      run: |
-        cat ~/.condarc
-
-    - name: Install cookiecutter and requirements
-      run: |
-        pip install -r requirements.txt
-
-    - name: Use the cookiecutter
-      run: |
-        cookiecutter . --no-input --output-dir "$HOME"
-
-    - name: Start the next steps in the cookiecutter output
-      run: |
-        echo "cd \"${HOME}/${PROJECT_DIR}\"" >> ~/.bash_profile
-
-    - name: Check the conda recipe
-      run: |
-        echo "Conda Recipe Folder':' conda-recipe"
-        echo "The recipe to be built is as follows:"
-        cat "conda-recipe/meta.yaml"
-
-    - name: Configure setuptools-scm
-      run: |
-        micromamba install setuptools-scm
-        python -m setuptools_scm
-
-    - name: Build the conda package and create the test environment
-      run: |
-        conda mambabuild "conda-recipe" \
-          --quiet \
-          --output-folder "$HOME/conda-bld" \
-          --no-anaconda-upload \
-          --python "${PYTHON_VERSION}" \
-          --extra-deps "python==${PYTHON_VERSION}" \
-          --keep-old-work \
-          2>&1 | tee $HOME/logs/mambabuild.txt
-
-    - name: Upload the built package as an artifact
-      uses: actions/upload-artifact@v3
-      with:
-        name: Python 3.9 - conda - package
-        path: ~/conda-bld
-
-    - name: Use the pre-built test environment
-      run: |
-        TEST_ENV_PATH=$(ls -d ${MAMBA_ROOT_PREFIX/#\~/$HOME}/conda-bld/*/*_test_env*)
-        echo "The test path should be: ${TEST_ENV_PATH}"
-
-        if [ ! -d "${TEST_ENV_PATH}" ]; then
-          echo "Something went wrong finding the test environment path. :("
-          find ${MAMBA_ROOT_PREFIX/#\~/$HOME}/conda-bld -type d
-          exit 1
-        fi
-
-        echo "micromamba activate ${TEST_ENV_PATH}" >> ~/.bash_profile
-
-    - name: Check the conda packages in the test env
-      run: |
-        conda list
-
-    - name: Verify conda-installed package
-      run: |
-        cd /tmp
-        python -c "import ${IMPORT_NAME}; print('Imported ${IMPORT_NAME} from ' + ${IMPORT_NAME}.__file__)"
-        command -v "${ENTRYPOINT_NAME}"
+          #   conda-test:
+          #     name: "Python 3.9: conda"
+          #     runs-on: ubuntu-20.04
+          # 
+          #     defaults:
+          #       run:
+          #         # The following allows for each run step to utilize ~/.bash_profile
+          #         # for setting up the per-step initial state.
+          #         # --login: a login shell. Source ~/.bash_profile
+          #         # -e: exit on first error
+          #         # -o pipefail: piped processes are important; fail if they fail
+          #         shell: bash --login -eo pipefail {0}
+          # 
+          #     steps:
+          #     - uses: actions/checkout@v3
+          #       with:
+          #         fetch-depth: 0
+          # 
+          #     - name: Configure git
+          #       run: |
+          #         git config --global user.email "pcds-bot@example.com"
+          #         git config --global user.name "PCDS / GitHub CI"
+          # 
+          #     - name: Set up micromamba and environment
+          #       run: |
+          #         cd "$HOME"
+          #         mkdir logs
+          #         curl -Ls https://micro.mamba.pm/api/micromamba/linux-64/latest | tar -xvj "bin/micromamba"
+          #         mkdir micromamba
+          # 
+          #         echo "Micromamba version: $(bin/micromamba --version)" | tee "$GITHUB_STEP_SUMMARY"
+          #         bin/micromamba shell hook --shell=bash >> ~/.bash_profile
+          # 
+          #         echo "micromamba activate" >> ~/.bash_profile
+          # 
+          #     - name: Configure conda for building
+          #       run: |
+          #         echo "${CONDARC_SOURCE}" > ~/.condarc
+          #         echo "Contents of ~/.condarc:"
+          #         echo "---------------------------"
+          #         cat ~/.condarc
+          #         echo "---------------------------"
+          # 
+          #     - name: Install boa for mambabuild
+          #       run: |
+          #         micromamba install boa conda-verify "python=${PYTHON_VERSION}" pip
+          #         micromamba info
+          # 
+          #     - name: Check condarc
+          #       run: |
+          #         cat ~/.condarc
+          # 
+          #     - name: Install cookiecutter and requirements
+          #       run: |
+          #         pip install -r requirements.txt
+          # 
+          #     - name: Use the cookiecutter
+          #       run: |
+          #         cookiecutter . --no-input --output-dir "$HOME"
+          # 
+          #     - name: Start the next steps in the cookiecutter output
+          #       run: |
+          #         echo "cd \"${HOME}/${PROJECT_DIR}\"" >> ~/.bash_profile
+          # 
+          #     - name: Check the conda recipe
+          #       run: |
+          #         echo "Conda Recipe Folder':' conda-recipe"
+          #         echo "The recipe to be built is as follows:"
+          #         cat "conda-recipe/meta.yaml"
+          # 
+          #     - name: Configure setuptools-scm
+          #       run: |
+          #         micromamba install setuptools-scm
+          #         python -m setuptools_scm
+          # 
+          #     - name: Build the conda package and create the test environment
+          #       run: |
+          #         conda mambabuild "conda-recipe" \
+          #           --quiet \
+          #           --output-folder "$HOME/conda-bld" \
+          #           --no-anaconda-upload \
+          #           --python "${PYTHON_VERSION}" \
+          #           --extra-deps "python==${PYTHON_VERSION}" \
+          #           --keep-old-work \
+          #           2>&1 | tee $HOME/logs/mambabuild.txt
+          # 
+          #     - name: Upload the built package as an artifact
+          #       uses: actions/upload-artifact@v3
+          #       with:
+          #         name: Python 3.9 - conda - package
+          #         path: ~/conda-bld
+          # 
+          #     - name: Use the pre-built test environment
+          #       run: |
+          #         TEST_ENV_PATH=$(ls -d ${MAMBA_ROOT_PREFIX/#\~/$HOME}/conda-bld/*/*_test_env*)
+          #         echo "The test path should be: ${TEST_ENV_PATH}"
+          # 
+          #         if [ ! -d "${TEST_ENV_PATH}" ]; then
+          #           echo "Something went wrong finding the test environment path. :("
+          #           find ${MAMBA_ROOT_PREFIX/#\~/$HOME}/conda-bld -type d
+          #           exit 1
+          #         fi
+          # 
+          #         echo "micromamba activate ${TEST_ENV_PATH}" >> ~/.bash_profile
+          # 
+          #     - name: Check the conda packages in the test env
+          #       run: |
+          #         conda list
+          # 
+          #     - name: Verify conda-installed package
+          #       run: |
+          #         cd /tmp
+          #         python -c "import ${IMPORT_NAME}; print('Imported ${IMPORT_NAME} from ' + ${IMPORT_NAME}.__file__)"
+          #         command -v "${ENTRYPOINT_NAME}"

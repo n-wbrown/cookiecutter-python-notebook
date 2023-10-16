@@ -40,7 +40,7 @@ jobs:
         shell: bash --login -eo pipefail {0}
     strategy:
       matrix:
-        config_file: [ tests/default_config.yaml, tests/complex_config.yaml]
+        config_file: [ default_config.yaml, complex_config.yaml]
 
 
     steps:
@@ -71,7 +71,7 @@ jobs:
 
     - name: Use the cookiecutter
       run: |
-        cookiecutter . --no-input --config-file ${{ matrix.config_file }} --output-dir "$HOME"
+        cookiecutter . --no-input --config-file tests/${{ matrix.config_file }} --output-dir "$HOME"
 
     - name: Build wheel and source distribution
       run: |
@@ -127,7 +127,7 @@ jobs:
       if: ${{ always() }}
       uses: actions/upload-artifact@v3
       with:
-        name: "pip - Cookiecutter Output"
+        name: "pip - Cookiecutter Output - ${{ matrix.config_file }}"
         path: ~/project_name
 
           #   conda-test:

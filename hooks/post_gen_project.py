@@ -22,5 +22,7 @@ def remove_paths():
             os.unlink(path) if os.path.isfile(path) else shutil.rmtree(path)
 
 
+print(REMOVE_PATHS)
+print("{{ cookiecutter.simple }}}")
 if __name__ == "__main__":
     remove_paths()

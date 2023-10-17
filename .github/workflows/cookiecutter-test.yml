@@ -41,6 +41,7 @@ jobs:
     strategy:
       matrix:
         config_file: [ default_config.yaml, complex_config.yaml]
+        python_version: [ 3.6, 3.7, 3.8, 3.9, 3.10]
 
 
     steps:
@@ -50,7 +51,7 @@ jobs:
 
     - uses: actions/setup-python@v4
       with:
-        python-version: "3.9"
+        python-version: "${{ matrix.python_version }}"
 
     - name: Upgrade pip
       run: |
@@ -127,7 +128,7 @@ jobs:
       if: ${{ always() }}
       uses: actions/upload-artifact@v3
       with:
-        name: "pip - Cookiecutter Output - ${{ matrix.config_file }}"
+        name: "pip - Cookiecutter Output - ${{ matrix.python_version }} - ${{ matrix.config_file }}"
         path: ~/project_name
 
           #   conda-test:

@@ -42,6 +42,21 @@ jobs:
       matrix:
         config_file: [ default_config.yaml, complex_config.yaml]
         python_version: [ "3.6", "3.7", "3.8", "3.9", "3.10", "3.11"]
+        include:
+          - python_version: "3.6"
+            python_version_index: "6"
+          - python_version: "3.7"
+            python_version_index: "5"
+          - python_version: "3.8"
+            python_version_index: "4"
+          - python_version: "3.9"
+            python_version_index: "3"
+          - python_version: "3.10"
+            python_version_index: "2"
+          - python_version: "3.10"
+            python_version_index: "2"
+          - python_version: "3.11"
+            python_version_index: "1"
 
 
     steps:
@@ -72,7 +87,7 @@ jobs:
 
     - name: Append version to config
       run: |
-        echo '  python_version: "${{ matrix.python_version }}" ' >> tests/${{ matrix.config_file }}
+        echo '  python_version: "${{ matrix.python_version_index }}" ' >> tests/${{ matrix.config_file }}
         cat tests/${{ matrix.config_file }}
 
     - name: Use the cookiecutter

@@ -87,6 +87,8 @@ jobs:
         # And: https://reproducible-builds.org/docs/source-date-epoch/
         cd "${HOME}/${PROJECT_DIR}"
         python -m build --sdist --wheel --outdir ./dist
+        cat pyproject.toml
+
 
     - name: Check the source distribution
       run: |

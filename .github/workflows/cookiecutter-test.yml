@@ -87,7 +87,7 @@ jobs:
 
     - name: Append version to config
       run: |
-        echo '  python_version: "${{ matrix.python_version_index }}" ' >> tests/${{ matrix.config_file }}
+        echo '  python_version: ${{ matrix.python_version_index }}' >> tests/${{ matrix.config_file }}
         cat tests/${{ matrix.config_file }}
 
     - name: Use the cookiecutter

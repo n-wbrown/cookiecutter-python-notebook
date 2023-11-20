@@ -10,7 +10,7 @@ env:
   PROJECT_DIR: "project_name"
   IMPORT_NAME: "project_name"
   ENTRYPOINT_NAME: "project-name"
-  PYTHON_VERSION: "3.9"
+  # PYTHON_VERSION: "3.9"
   MAMBA_ROOT_PREFIX: "~/micromamba"
   CONDARC_SOURCE: |
     notify_outdated_conda: false
@@ -71,7 +71,7 @@ jobs:
 
     - name: Append version to config
       run: |
-        echo '  python_version: ${{ matrix.python_version }}' >> tests/${{ matrix.config_file }}
+        echo '  python_version: "${{ matrix.python_version }}"' >> tests/${{ matrix.config_file }}
         cat tests/${{ matrix.config_file }}
 
     - name: Use the cookiecutter

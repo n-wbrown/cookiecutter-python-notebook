@@ -41,7 +41,7 @@ jobs:
     strategy:
       matrix:
         config_file: [ default_config.yaml, complex_config.yaml]
-        python_version: [ "3.6", "3.7", "3.8", "3.9", "3.10"]
+        python_version: [ "3.6", "3.7", "3.8", "3.9", "3.10", "3.11"]
 
 
     steps:
@@ -69,6 +69,10 @@ jobs:
       run: |
         git config --global user.email "pcds-bot@example.com"
         git config --global user.name "PCDS / GitHub CI"
+
+    - name: Append version to config
+      run: |
+        echo '\n  python_version: "${{ matrix.python_version }}" ' >> tests/${{ matrix.config_file }}
 
     - name: Use the cookiecutter
       run: |

@@ -15,7 +15,7 @@
 Requirements
 ------------
 
-* Python 3.9+
+* Python {{ cookiecutter.python_version }}+
 
 Installation
 ------------

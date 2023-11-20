@@ -7,7 +7,7 @@
     "github_repo_group": "pcdshub",
     "import_name": "{{ cookiecutter.folder_name }}",
     "description": "A short description of the project.",
-    "python_version": ["3.11", "3.10", "3.9", "3.8", "3.7", "3.6", "3.12"],
+    "python_version": ["3.11", "3.10", "3.9", "3.8", "3.12"],
     "auto_git_setup": ["no", "yes"],
     "git_remote_name": "origin",
     "readme_format": ["md", "rst"],

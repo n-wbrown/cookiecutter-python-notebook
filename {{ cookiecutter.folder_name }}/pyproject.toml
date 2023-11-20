@@ -16,7 +16,7 @@ description = "{{ cookiecutter.description }}"
 dynamic = [ "version", "readme", "dependencies", "optional-dependencies",]
 keywords = []
 name = "{{ cookiecutter.repo_name }}"
-requires-python = ">=3.9"
+requires-python = ">={{ cookiecutter.python_version }}"
 
 [options]
 zip_safe = false

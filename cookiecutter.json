@@ -1,14 +1,14 @@
 {
     "project_name": "project-name",
     "repo_name": "{{ cookiecutter.project_name.lower().replace(' ', '-') }}",
-    "author_name": "SLAC National Accelerator Laboratory",
+    "author_name": "Author Name",
     "email": "",
     "folder_name": "{{ cookiecutter.repo_name.replace('-', '_') }}",
     "github_repo_group": "pcdshub",
     "import_name": "{{ cookiecutter.folder_name }}",
     "description": "A short description of the project.",
-    "python_interpreter": ["python3", "python"],
-    "auto_git_setup": ["yes","no"],
+    "python_version": ["3.11", "3.10", "3.9", "3.8", "3.12"],
+    "auto_git_setup": ["no", "yes"],
     "git_remote_name": "origin",
     "readme_format": ["md", "rst"],
     "simple": ["yes", "no"]

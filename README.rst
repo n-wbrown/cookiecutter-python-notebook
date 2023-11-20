@@ -2,7 +2,7 @@
 Python Package and Notebook Cookiecutter
 ========================================
 
-A project template for python projects and notebooks. This package is primarily intended for reserachers organize small projects
+A project template for python projects and notebooks. This package is primarily intended for researchers to organize small projects
 consisting of modules and notebooks.
 
 To learn more about cookiecutter:
@@ -29,15 +29,15 @@ Starting a New Project
 
 If using for the first time or in need of a new clone: ::
 
-  $ cookiecutter https://github.com/pcdshub/cookiecutter-pcds-python
+  $ cookiecutter https://github.com/n-wbrown/cookiecutter-python-notebook
 
 or ::
 
-  $ cookiecutter gh:pcdshub/cookiecutter-pcds-python
+  $ cookiecutter gh:n-wbrown/cookiecutter-python-notebook
 
 Otherwise: ::
 
-  $ cookiecutter cookiecutter-pcds-python
+  $ cookiecutter cookiecutter-python-notebook
 
 Configuring a New Project
 -------------------------

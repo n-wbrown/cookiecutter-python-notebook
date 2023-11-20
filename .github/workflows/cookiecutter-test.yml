@@ -10,7 +10,7 @@ env:
   PROJECT_DIR: "project_name"
   IMPORT_NAME: "project_name"
   ENTRYPOINT_NAME: "project-name"
-  PYTHON_VERSION: "3.9"
+  # PYTHON_VERSION: "3.9"
   MAMBA_ROOT_PREFIX: "~/micromamba"
   CONDARC_SOURCE: |
     notify_outdated_conda: false
@@ -41,8 +41,7 @@ jobs:
     strategy:
       matrix:
         config_file: [ default_config.yaml, complex_config.yaml]
-        python_version: [ "3.6", "3.7", "3.8", "3.9", "3.10"]
-
+        python_version: ["3.8", "3.9", "3.10", "3.11", "3.12"]
 
     steps:
     - uses: actions/checkout@v3
@@ -70,6 +69,11 @@ jobs:
         git config --global user.email "pcds-bot@example.com"
         git config --global user.name "PCDS / GitHub CI"
 
+    - name: Append version to config
+      run: |
+        echo '  python_version: "${{ matrix.python_version }}"' >> tests/${{ matrix.config_file }}
+        cat tests/${{ matrix.config_file }}
+
     - name: Use the cookiecutter
       run: |
         cookiecutter . --no-input --config-file tests/${{ matrix.config_file }} --output-dir "$HOME"
@@ -77,11 +81,14 @@ jobs:
     - name: Build wheel and source distribution
       run: |
         export SOURCE_DATE_EPOCH=$(git log -1 --pretty=%ct)
+        export SETUPTOOLS_SCM_DEBUG=1
         echo "Source date epoch set to ${SOURCE_DATE_EPOCH} for reproducible build"
         # See: https://github.com/python/cpython/pull/5200
         # And: https://reproducible-builds.org/docs/source-date-epoch/
         cd "${HOME}/${PROJECT_DIR}"
         python -m build --sdist --wheel --outdir ./dist
+        cat pyproject.toml
+
 
     - name: Check the source distribution
       run: |

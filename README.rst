@@ -10,9 +10,22 @@ To learn more about cookiecutter:
 - Project Homepage: https://cookiecutter.readthedocs.io/en/latest/
 - Github: https://github.com/audreyr/cookiecutter
 
+Project Status
+------------
+.. list-table:: 
+   :widths: 5 5
+   :header-rows: 0
+
+   * - main
+     - .. image:: https://github.com/n-wbrown/cookiecutter-python-notebook/actions/workflows/cookiecutter-test.yml/badge.svg?branch=main
+            :alt: main status
+   * - dev
+     - .. image:: https://github.com/n-wbrown/cookiecutter-python-notebook/actions/workflows/cookiecutter-test.yml/badge.svg?branch=dev
+            :alt: dev status
+
 Requirements for the Template
 -----------------------------
-- Python >= 3.5
+- Python >= 3.8
 - `Cookiecutter Python package <http://cookiecutter.readthedocs.org/en/latest/installation.html>`_ >= 1.4.0: This can be installed with pip by or conda depending on how you manage your Python packages:
 
 ::

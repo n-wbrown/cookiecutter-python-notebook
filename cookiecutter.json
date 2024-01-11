@@ -4,7 +4,7 @@
     "author_name": "Author Name",
     "email": "",
     "folder_name": "{{ cookiecutter.repo_name.replace('-', '_') }}",
-    "github_repo_group": "pcdshub",
+    "github_repo_group": "",
     "import_name": "{{ cookiecutter.folder_name }}",
     "description": "A short description of the project.",
     "python_version": ["3.11", "3.10", "3.9", "3.8", "3.12"],

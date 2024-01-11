@@ -12,6 +12,8 @@ REMOVE_PATHS = [
     '{% if cookiecutter.simple == "yes" %}.github{% endif %}',
     '{% if cookiecutter.simple == "yes" %}conda-recipe{% endif %}',
     '{% if cookiecutter.simple == "yes" %}docs{% endif %}',
+    '{% if cookiecutter.simple == "yes" %}data{% endif %}',
+    '{% if cookiecutter.simple == "yes" %}output{% endif %}',
 ]
 
 

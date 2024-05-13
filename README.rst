@@ -11,7 +11,7 @@ To learn more about cookiecutter:
 - Github: https://github.com/audreyr/cookiecutter
 
 Project Status
-------------
+--------------
 .. list-table:: 
    :widths: 5 5
    :header-rows: 0
@@ -37,6 +37,8 @@ or ::
   $ conda install cookiecutter -c conda-forge
 
 
+
+
 Starting a New Project
 ----------------------
 
@@ -51,6 +53,11 @@ or ::
 Otherwise: ::
 
   $ cookiecutter cookiecutter-python-notebook
+
+For using a specific git tag: ::
+
+  $ cookiecutter cookiecutter-python-notebook --checkout v0.2
+
 
 Configuring a New Project
 -------------------------

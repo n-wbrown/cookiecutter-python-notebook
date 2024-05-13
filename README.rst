@@ -54,7 +54,7 @@ Otherwise: ::
 
   $ cookiecutter cookiecutter-python-notebook
 
-For using a specific git tag: ::
+For using a specific git tag of the cookiecutter: ::
 
   $ cookiecutter cookiecutter-python-notebook --checkout v0.2
 

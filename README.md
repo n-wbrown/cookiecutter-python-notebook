@@ -8,16 +8,11 @@ To learn more about cookiecutter:
 - Github: https://github.com/audreyr/cookiecutter
 
 ## Project Status
-.. list-table:: 
-   :widths: 5 5
-   :header-rows: 0
 
-   * - main
-     - .. image:: https://github.com/n-wbrown/cookiecutter-python-notebook/actions/workflows/cookiecutter-test.yml/badge.svg?branch=main
-            :alt: main status
-   * - dev
-     - .. image:: https://github.com/n-wbrown/cookiecutter-python-notebook/actions/workflows/cookiecutter-test.yml/badge.svg?branch=dev
-            :alt: dev status
+| Branch      | Status      |
+| ----------- | ----------- |
+| Main        | [![main](https://github.com/n-wbrown/cookiecutter-python-notebook/actions/workflows/cookiecutter-test.yml/badge.svg?branch=main)](https://github.com/n-wbrown/cookiecutter-python-notebook/actions?query=branch%3Amain) |
+| Dev         | [![dev](https://github.com/n-wbrown/cookiecutter-python-notebook/actions/workflows/cookiecutter-test.yml/badge.svg?branch=dev)](https://github.com/n-wbrown/cookiecutter-python-notebook/actions?query=branch%3Adev) |
 
 ## Requirements for the Template
 - Python >= 3.8
@@ -35,7 +30,7 @@ or
 
 ## Starting a New Project
 
-If using for the first time or in need of a new clone: ::
+If using for the first time or in need of a new clone:
 
 ```
   $ cookiecutter https://github.com/n-wbrown/cookiecutter-python-notebook
@@ -53,7 +48,7 @@ Otherwise:
   $ cookiecutter cookiecutter-python-notebook
 ```
 
-For using a specific git tag of the cookiecutter:
+For using a specific git tag of the cookiecutter, append the `--checkout [version]` option and supply the intended git tag name:
 
 ```
   $ cookiecutter cookiecutter-python-notebook --checkout v0.2
@@ -70,9 +65,9 @@ The directory structure of your new project looks like this:
 
 ```
   │
-  ├── .gitignore            <- Gitignore for the repo
+  ├── .gitignore            <- Gitignore for the repo (https://git-scm.com/docs/gitignore)
   │
-  ├── {{ import_name }}     <- Source code for use in this project.
+  ├── {{ import_name }}     <- Source code for use in this project
   │   │
   │   ├── __init__.py       <- Init file for the project
   │   │
@@ -81,6 +76,8 @@ The directory structure of your new project looks like this:
   │       ├── __init__.py   <- Init file for the tests
   │       │
   │       └── conftest.py   <- Pytest conftest file
+  │
+  ├── pyproject.toml        <- Contains configuration and packaging information about your project
   │
   ├── .logging.yml          <- Yaml configuration for Python logging
   │
@@ -103,17 +100,17 @@ The directory structure of your new project looks like this:
   ├── dev-requirements.txt  <- (Optional) Requirements to develop the package and execute the test suite
   │
   ├── docs-requirements.txt <- (Optional) Requirements to generate the sphinx documentation
-  │
 ```
 
 
 ## Installing Development Requirements
 
+The following commands can be used to install the packages necessary for running, developing, and building the documentation for your new package respectively. Run these commands in the main directory of your newly created package.
+
 ```
   $ pip install -Ur requirements.txt
   $ pip install -Ur dev-requirements.txt
   $ pip install -Ur docs-requirements.txt
-
 ```
 
 ## Acknowledgements 

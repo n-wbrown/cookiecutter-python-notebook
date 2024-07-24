@@ -80,7 +80,7 @@ These options are less critical and can be easily configured at a later time. Fo
 - `git_remote_name`: Set the name of git remote. (See `git remote` [documentation](https://git-scm.com/docs/git-remote) for details)
 - `readme_format`: Choose the format of the readme file to use.
 - `simple`: Simple omits most CI tools and additional organization folders.
-- `strip_ipynb_outputs`: Selecting yes includes a hook to remove output from juypter notebooks before committing. Selecting "no" is strongly recommended. See this [section](Committing_Jupyter_Notebook_Output) for more details.
+- `strip_ipynb_outputs`: Selecting yes includes a hook to remove output from juypter notebooks before committing. Selecting "no" is strongly recommended. See this [section](#committing-jupyter-notebook-output) for more details.
 
 Once the package has been configured via the questionnaire. Your new package will be created in a new directory matching the `folder_name` option.
 

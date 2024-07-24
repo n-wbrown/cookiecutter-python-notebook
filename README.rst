@@ -2,12 +2,11 @@
 Python Package and Notebook Cookiecutter
 ========================================
 
-A project template for python projects and notebooks. This package is primarily intended for researchers to organize small projects
-consisting of modules and notebooks.
+A project template for python projects and notebooks. This template is intended for researchers to organize small projects consisting of modules and notebooks.
 
 To learn more about cookiecutter:
 
-- Project Homepage: https://cookiecutter.readthedocs.io/en/latest/
+- Cookiecutter Homepage: https://cookiecutter.readthedocs.io/en/latest/
 - Github: https://github.com/audreyr/cookiecutter
 
 Project Status
@@ -72,37 +71,41 @@ The directory structure of your new project looks like this:
 
 .. code-block:: text
 
-  ├── .github/             <- GitHub templates and workflow settings
   │
-  ├── {{ import_name }}    <- Source code for use in this project.
+  ├── .gitignore            <- Gitignore for the repo
+  │
+  ├── {{ import_name }}     <- Source code for use in this project.
   │   │
-  │   ├── __init__.py      <- Init file for the project
+  │   ├── __init__.py       <- Init file for the project
   │   │
-  │   └── tests            <- Tests for the module
+  │   └── tests             <- Tests for the module
   │       │
-  │       ├── __init__.py  <- Init file for the tests
+  │       ├── __init__.py   <- Init file for the tests
   │       │
-  │       └── conftest.py  <- Pytest conftest file
+  │       └── conftest.py   <- Pytest conftest file
   │
-  ├── docs                 <- A default Sphinx project; see sphinx-doc.org for details
+  ├── .logging.yml          <- Yaml configuration for Python logging
   │
-  ├── dev-requirements.txt <- Requirements to develop and test the package
+  ├── LICENSE               <- License for the project
   │
-  ├── docs-requirements.txt <- Requirements to make the sphinx documentation
+  ├── MANIFEST.in           <- setup.py manifest of files
   │
-  ├── .gitignore           <- Gitignore for the repo
+  ├── README.rst            <- The top-level README for developers using this project
   │
-  ├── .logging.yml         <- Yaml configuration for Python logging
+  ├── requirements.txt      <- The requirements to install the project.
   │
-  ├── LICENSE              <- License for the project
+  ├── .github/              <- (Optional) GitHub templates and workflow settings
   │
-  ├── MANIFEST.in          <- setup.py manifest of files
+  ├── docs                  <- (Optional) A default Sphinx project; see sphinx-doc.org for details
   │
-  ├── README.rst           <- The top-level README for developers using this project
+  ├── data                  <- (Optional) An empty directory for data and links
   │
-  ├── requirements.txt     <- The requirements to install the project.
+  ├── output                <- (Optional) An empty directory for results
   │
-  ├── run_tests.py         <- Script that runs the files in the tests directory
+  ├── dev-requirements.txt  <- (Optional) Requirements to develop the package and execute the test suite
+  │
+  ├── docs-requirements.txt <- (Optional) Requirements to generate the sphinx documentation
+  │
 
 
 Installing Development Requirements
@@ -112,6 +115,7 @@ Installing Development Requirements
   $ pip install -Ur requirements.txt
   $ pip install -Ur dev-requirements.txt
   $ pip install -Ur docs-requirements.txt
+
 
 Acknowledgements 
 ----------------

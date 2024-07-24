@@ -1,1 +1,5 @@
 .git_archival.txt  export-subst
+
+{% if cookiecutter.strip_ipynb_outputs=="yes"%}
+*.ipynb filter=strip-notebook-output  
+{%endif%}

@@ -11,5 +11,6 @@
     "auto_git_setup": ["no", "yes"],
     "git_remote_name": "origin",
     "readme_format": ["md", "rst"],
-    "simple": ["yes", "no"]
+    "simple": ["yes", "no"],
+    "strip_ipynb_outputs": ["yes", "no"]
 }

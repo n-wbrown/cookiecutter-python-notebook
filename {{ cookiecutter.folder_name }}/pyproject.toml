@@ -61,5 +61,4 @@ file = "docs-requirements.txt"
 {% endif %}
 
 [tool.pytest.ini_options]
-addopts = "--cov=."
 
